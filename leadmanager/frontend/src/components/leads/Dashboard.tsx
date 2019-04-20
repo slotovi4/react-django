@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Form from './Form';
-import Leads from './Leads';
+import LeadsContainer from '../../containers/LeadsContainer';
 
 const Dashboard = () => {
   return (
     <React.Fragment>
       <Form />
-      <Leads />
+      <LeadsContainer />
     </React.Fragment>
   );
 };

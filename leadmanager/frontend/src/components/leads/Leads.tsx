@@ -1,6 +1,15 @@
 import * as React from 'react';
 
-class Leads extends React.Component {
+interface IProps {
+  leads: any;
+  getLeads: () => void;
+}
+
+class Leads extends React.Component<IProps> {
+  componentDidMount() {
+    this.props.getLeads();
+  }
+
   render() {
     return (
       <div>
