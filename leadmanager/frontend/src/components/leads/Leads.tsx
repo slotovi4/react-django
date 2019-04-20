@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ILead } from '../../actions/interface';
+import { number } from 'prop-types';
 
 interface IProps {
   leads: ILead[];
   getLeads: () => void;
+  deleteLead: (id: number) => void;
 }
 
 class Leads extends React.Component<IProps> {
@@ -12,7 +14,7 @@ class Leads extends React.Component<IProps> {
   }
 
   render() {
-    const { leads } = this.props;
+    const { leads, deleteLead } = this.props;
 
     return (
       <section>
@@ -35,7 +37,12 @@ class Leads extends React.Component<IProps> {
                 <td>{email}</td>
                 <td>{message}</td>
                 <td>
-                  <button className='btn btn-danger btn-sm'>Delete</button>
+                  <button
+                    className='btn btn-danger btn-sm'
+                    onClick={() => deleteLead(id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nexports.getLeads = () => (dispatch) => {\n    axios_1.default\n        .get('/api/leads/')\n        .then(res => {\n        dispatch({\n            type: types_1.GET_LEADS,\n            leads: res.data\n        });\n    })\n        .catch(err => console.log(err));\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/leadsActions.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nexports.getLeads = () => (dispatch) => {\n    axios_1.default\n        .get('/api/leads/')\n        .then(res => {\n        dispatch({\n            type: types_1.GET_LEADS,\n            leads: res.data\n        });\n    })\n        .catch(err => console.log(err));\n};\nexports.deleteLead = (id) => (dispatch) => {\n    axios_1.default\n        .delete(`/api/leads/${id}/`)\n        .then(res => {\n        dispatch({\n            type: types_1.DELETE_LEAD,\n            deleted: id\n        });\n    })\n        .catch(err => console.log(err));\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/leadsActions.ts?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GET_LEADS = 'GET_LEADS';\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/types.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GET_LEADS = 'GET_LEADS';\nexports.DELETE_LEAD = 'DELETE_LEAD';\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/types.ts?");
 
 /***/ }),
 
@@ -166,7 +166,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass Leads extends React.Component {\n    componentDidMount() {\n        this.props.getLeads();\n    }\n    render() {\n        const { leads } = this.props;\n        return (React.createElement(\"section\", null,\n            React.createElement(\"h2\", null, \"Leads List\"),\n            React.createElement(\"table\", { className: 'table table-striped' },\n                React.createElement(\"thead\", null,\n                    React.createElement(\"tr\", null,\n                        React.createElement(\"th\", null, \"ID\"),\n                        React.createElement(\"th\", null, \"Name\"),\n                        React.createElement(\"th\", null, \"Email\"),\n                        React.createElement(\"th\", null, \"Message\"),\n                        React.createElement(\"th\", null))),\n                React.createElement(\"tbody\", null, leads.map(({ id, name, email, message }) => (React.createElement(\"tr\", { key: `table_${id}` },\n                    React.createElement(\"td\", null, id),\n                    React.createElement(\"td\", null, name),\n                    React.createElement(\"td\", null, email),\n                    React.createElement(\"td\", null, message),\n                    React.createElement(\"td\", null,\n                        React.createElement(\"button\", { className: 'btn btn-danger btn-sm' }, \"Delete\")))))))));\n    }\n}\nexports.default = Leads;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/leads/Leads.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass Leads extends React.Component {\n    componentDidMount() {\n        this.props.getLeads();\n    }\n    render() {\n        const { leads, deleteLead } = this.props;\n        return (React.createElement(\"section\", null,\n            React.createElement(\"h2\", null, \"Leads List\"),\n            React.createElement(\"table\", { className: 'table table-striped' },\n                React.createElement(\"thead\", null,\n                    React.createElement(\"tr\", null,\n                        React.createElement(\"th\", null, \"ID\"),\n                        React.createElement(\"th\", null, \"Name\"),\n                        React.createElement(\"th\", null, \"Email\"),\n                        React.createElement(\"th\", null, \"Message\"),\n                        React.createElement(\"th\", null))),\n                React.createElement(\"tbody\", null, leads.map(({ id, name, email, message }) => (React.createElement(\"tr\", { key: `table_${id}` },\n                    React.createElement(\"td\", null, id),\n                    React.createElement(\"td\", null, name),\n                    React.createElement(\"td\", null, email),\n                    React.createElement(\"td\", null, message),\n                    React.createElement(\"td\", null,\n                        React.createElement(\"button\", { className: 'btn btn-danger btn-sm', onClick: () => deleteLead(id) }, \"Delete\")))))))));\n    }\n}\nexports.default = Leads;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/leads/Leads.tsx?");
 
 /***/ }),
 
@@ -178,7 +178,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst leadsActions_1 = __webpack_require__(/*! ../actions/leadsActions */ \"./leadmanager/frontend/src/actions/leadsActions.ts\");\nconst Leads_1 = __webpack_require__(/*! ../components/leads/Leads */ \"./leadmanager/frontend/src/components/leads/Leads.tsx\");\nconst mapStateToProps = (state) => ({\n    leads: state.leads.leads\n});\nexports.default = react_redux_1.connect(mapStateToProps, { getLeads: leadsActions_1.getLeads })(Leads_1.default);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/containers/LeadsContainer.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst leadsActions_1 = __webpack_require__(/*! ../actions/leadsActions */ \"./leadmanager/frontend/src/actions/leadsActions.ts\");\nconst Leads_1 = __webpack_require__(/*! ../components/leads/Leads */ \"./leadmanager/frontend/src/components/leads/Leads.tsx\");\nconst mapStateToProps = (state) => ({\n    leads: state.leads.leads\n});\nexports.default = react_redux_1.connect(mapStateToProps, { getLeads: leadsActions_1.getLeads, deleteLead: leadsActions_1.deleteLead })(Leads_1.default);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/containers/LeadsContainer.tsx?");
 
 /***/ }),
 
@@ -214,7 +214,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    leads: []\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_LEADS:\n            return Object.assign({}, state, { leads: action.leads });\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/leadsReducer.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    leads: []\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_LEADS:\n            return Object.assign({}, state, { leads: action.leads });\n        case types_1.DELETE_LEAD:\n            return Object.assign({}, state, { leads: state.leads.filter(lead => lead.id !== action.deleted) });\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/leadsReducer.ts?");
 
 /***/ }),
 

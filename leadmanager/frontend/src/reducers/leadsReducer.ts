@@ -1,4 +1,4 @@
-import { GET_LEADS } from '../actions/types';
+import { GET_LEADS, DELETE_LEAD } from '../actions/types';
 import { ILead } from '../actions/interface';
 
 interface IState {
@@ -6,8 +6,9 @@ interface IState {
 }
 
 interface IAction {
-  type: 'GET_LEADS';
+  type: 'GET_LEADS' | 'DELETE_LEAD';
   leads?: ILead[];
+  deleted?: number;
 }
 
 const initialState: IState = {
@@ -20,6 +21,11 @@ export default (state = initialState, action: IAction) => {
       return {
         ...state,
         leads: action.leads
+      };
+    case DELETE_LEAD:
+      return {
+        ...state,
+        leads: state.leads.filter(lead => lead.id !== action.deleted)
       };
     default:
       return state;

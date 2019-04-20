@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getLeads } from '../actions/leadsActions';
+import { getLeads, deleteLead } from '../actions/leadsActions';
 import Leads from '../components/leads/Leads';
 
 const mapStateToProps = (state: any) => ({
@@ -8,5 +8,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
   mapStateToProps,
-  { getLeads }
+  { getLeads, deleteLead }
 )(Leads);
