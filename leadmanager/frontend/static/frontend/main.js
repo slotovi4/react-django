@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass App extends React.Component {\n    render() {\n        return React.createElement(\"h1\", null, \"React App 123\");\n    }\n}\nexports.default = App;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/App.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass App extends React.Component {\n    render() {\n        return React.createElement(\"h1\", null, \"React App 12345\");\n    }\n}\nexports.default = App;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/App.tsx?");
 
 /***/ }),
 

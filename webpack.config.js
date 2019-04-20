@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const root = './leadmanager/frontend';
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, `${root}/static/frontend`),
-    filename: 'main.min.js'
+    filename: 'main.js'
   },
   module: {
     rules: [
@@ -21,10 +20,5 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: `${root}/templates/frontend/index.html`
-    })
-  ]
+  }
 };
