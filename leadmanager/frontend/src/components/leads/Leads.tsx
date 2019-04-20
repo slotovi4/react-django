@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { ILead } from '../../actions/interface';
 
 interface IProps {
-  leads: any;
+  leads: ILead;
   getLeads: () => void;
 }
 
