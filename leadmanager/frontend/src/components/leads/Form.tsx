@@ -1,12 +1,20 @@
 import * as React from 'react';
+import { ILead } from '../../actions/interface';
 
-const Form = () => {
+interface IProps {
+  addLead: (lead: ILead) => void;
+}
+
+const Form = ({ addLead }: IProps) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [message, setMessage] = React.useState('');
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const lead = { name, email, message };
+
+    addLead(lead);
   };
 
   return (

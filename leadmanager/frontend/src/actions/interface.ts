@@ -1,5 +1,5 @@
 export interface ILead {
-  id: number;
+  id?: number;
   name: string;
   email: string;
   message: string;
