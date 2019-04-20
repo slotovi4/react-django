@@ -94,7 +94,55 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass App extends React.Component {\n    render() {\n        return React.createElement(\"h1\", null, \"React App 12345\");\n    }\n}\nexports.default = App;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/App.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst Header_1 = __webpack_require__(/*! ./layout/Header */ \"./leadmanager/frontend/src/components/layout/Header.tsx\");\nconst Dashboard_1 = __webpack_require__(/*! ./leads/Dashboard */ \"./leadmanager/frontend/src/components/leads/Dashboard.tsx\");\nclass App extends React.Component {\n    render() {\n        return (React.createElement(\"section\", null,\n            React.createElement(Header_1.default, null),\n            React.createElement(\"div\", { className: 'container' },\n                React.createElement(Dashboard_1.default, null))));\n    }\n}\nexports.default = App;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/App.tsx?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/components/layout/Header.tsx":
+/*!***************************************************************!*\
+  !*** ./leadmanager/frontend/src/components/layout/Header.tsx ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass Header extends React.Component {\n    render() {\n        return (React.createElement(\"nav\", { className: 'navbar navbar-expand-sm navbar-light bg-light' },\n            React.createElement(\"button\", { className: 'navbar-toggler', type: 'button', \"data-toggle\": 'collapse', \"data-target\": '#navbarTogglerDemo01', \"aria-controls\": 'navbarTogglerDemo01', \"aria-expanded\": 'false', \"aria-label\": 'Toggle navigation' },\n                React.createElement(\"span\", { className: 'navbar-toggler-icon' })),\n            React.createElement(\"div\", { className: 'collapse navbar-collapse', id: 'navbarTogglerDemo01' },\n                React.createElement(\"a\", { className: 'navbar-brand', href: '#' }, \"Lead Manager\"),\n                React.createElement(\"ul\", { className: 'navbar-nav mr-auto mt-2 mt-lg-0' }))));\n    }\n}\nexports.default = Header;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/layout/Header.tsx?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/components/leads/Dashboard.tsx":
+/*!*****************************************************************!*\
+  !*** ./leadmanager/frontend/src/components/leads/Dashboard.tsx ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst Form_1 = __webpack_require__(/*! ./Form */ \"./leadmanager/frontend/src/components/leads/Form.tsx\");\nconst Leads_1 = __webpack_require__(/*! ./Leads */ \"./leadmanager/frontend/src/components/leads/Leads.tsx\");\nconst Dashboard = () => {\n    return (React.createElement(React.Fragment, null,\n        React.createElement(Form_1.default, null),\n        React.createElement(Leads_1.default, null)));\n};\nexports.default = Dashboard;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/leads/Dashboard.tsx?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/components/leads/Form.tsx":
+/*!************************************************************!*\
+  !*** ./leadmanager/frontend/src/components/leads/Form.tsx ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass Form extends React.Component {\n    render() {\n        return (React.createElement(\"div\", null,\n            React.createElement(\"h1\", null, \"Add Lead Form\")));\n    }\n}\nexports.default = Form;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/leads/Form.tsx?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/components/leads/Leads.tsx":
+/*!*************************************************************!*\
+  !*** ./leadmanager/frontend/src/components/leads/Leads.tsx ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nclass Leads extends React.Component {\n    render() {\n        return (React.createElement(\"div\", null,\n            React.createElement(\"h1\", null, \"Leads List\")));\n    }\n}\nexports.default = Leads;\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/leads/Leads.tsx?");
 
 /***/ }),
 
