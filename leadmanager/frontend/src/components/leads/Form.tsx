@@ -15,6 +15,9 @@ const Form = ({ addLead }: IProps) => {
     const lead = { name, email, message };
 
     addLead(lead);
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (

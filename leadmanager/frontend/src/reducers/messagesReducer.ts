@@ -1,7 +1,7 @@
-import { GET_MESSAGES, CREATE_MESSAGE, CLEAR_MESSAGE } from '../actions/types';
+import { CREATE_MESSAGE, CLEAR_MESSAGE } from '../actions/types';
 
 interface IAction {
-  type: 'GET_MESSAGES' | 'CREATE_MESSAGE' | 'CLEAR_MESSAGE';
+  type: 'CREATE_MESSAGE' | 'CLEAR_MESSAGE';
   msg?: string;
 }
 
@@ -15,8 +15,6 @@ const initialState: IState = {
 
 export default (state = initialState, action: IAction) => {
   switch (action.type) {
-    case GET_MESSAGES:
-      return state;
     case CREATE_MESSAGE:
       return {
         ...state,
