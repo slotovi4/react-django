@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD } from './types';
+import { GET_LEADS, DELETE_LEAD, ADD_LEAD, GET_ERRORS } from './types';
 import axios from 'axios';
 import { ILead } from './interface';
 
@@ -36,5 +36,11 @@ export const addLead = (lead: ILead) => (dispatch: Dispatch<object>) => {
         added: res.data
       });
     })
-    .catch(err => console.log(err));
+    .catch(({ response }) =>
+      dispatch({
+        type: GET_ERRORS,
+        msg: response.data,
+        status: response.status
+      })
+    );
 };
