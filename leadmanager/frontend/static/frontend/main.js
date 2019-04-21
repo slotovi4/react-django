@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./leadmanager/frontend/src/actions/errors.ts":
+/*!****************************************************!*\
+  !*** ./leadmanager/frontend/src/actions/errors.ts ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nexports.clearErrors = () => (dispatch) => {\n    dispatch({\n        type: types_1.CLEAR_ERRORS\n    });\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/errors.ts?");
+
+/***/ }),
+
 /***/ "./leadmanager/frontend/src/actions/leadsActions.ts":
 /*!**********************************************************!*\
   !*** ./leadmanager/frontend/src/actions/leadsActions.ts ***!
@@ -94,7 +106,19 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nexports.getLeads = () => (dispatch) => {\n    axios_1.default\n        .get('/api/leads/')\n        .then(res => {\n        dispatch({\n            type: types_1.GET_LEADS,\n            leads: res.data\n        });\n    })\n        .catch(err => console.log(err));\n};\nexports.deleteLead = (id) => (dispatch) => {\n    axios_1.default\n        .delete(`/api/leads/${id}/`)\n        .then(res => {\n        dispatch({\n            type: types_1.DELETE_LEAD,\n            deleted: id\n        });\n    })\n        .catch(err => console.log(err));\n};\nexports.addLead = (lead) => (dispatch) => {\n    axios_1.default\n        .post('/api/leads/', lead)\n        .then(res => {\n        dispatch({\n            type: types_1.ADD_LEAD,\n            added: res.data\n        });\n    })\n        .catch(({ response }) => dispatch({\n        type: types_1.GET_ERRORS,\n        msg: response.data,\n        status: response.status\n    }));\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/leadsActions.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst messages_1 = __webpack_require__(/*! ./messages */ \"./leadmanager/frontend/src/actions/messages.ts\");\nconst axios_1 = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nexports.getLeads = () => (dispatch) => {\n    axios_1.default\n        .get('/api/leads/')\n        .then(res => {\n        dispatch({\n            type: types_1.GET_LEADS,\n            leads: res.data\n        });\n    })\n        .catch(err => console.log(err));\n};\nexports.deleteLead = (id) => (dispatch) => {\n    axios_1.default\n        .delete(`/api/leads/${id}/`)\n        .then(res => {\n        dispatch(messages_1.createMessage('Lead deleted'));\n        dispatch({\n            type: types_1.DELETE_LEAD,\n            deleted: id\n        });\n    })\n        .catch(err => console.log(err));\n};\nexports.addLead = (lead) => (dispatch) => {\n    axios_1.default\n        .post('/api/leads/', lead)\n        .then(res => {\n        dispatch(messages_1.createMessage('Lead added'));\n        dispatch({\n            type: types_1.ADD_LEAD,\n            added: res.data\n        });\n    })\n        .catch(({ response }) => dispatch({\n        type: types_1.GET_ERRORS,\n        msg: response.data,\n        status: response.status\n    }));\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/leadsActions.ts?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/actions/messages.ts":
+/*!******************************************************!*\
+  !*** ./leadmanager/frontend/src/actions/messages.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ./types */ \"./leadmanager/frontend/src/actions/types.ts\");\nexports.createMessage = (msg) => {\n    return {\n        type: types_1.CREATE_MESSAGE,\n        msg\n    };\n};\nexports.clearMessage = () => (dispatch) => {\n    dispatch({ type: types_1.CLEAR_MESSAGE });\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/messages.ts?");
 
 /***/ }),
 
@@ -106,7 +130,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GET_LEADS = 'GET_LEADS';\nexports.DELETE_LEAD = 'DELETE_LEAD';\nexports.ADD_LEAD = 'ADD_LEAD';\nexports.GET_ERRORS = 'GET_ERRORS';\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/types.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GET_LEADS = 'GET_LEADS';\nexports.DELETE_LEAD = 'DELETE_LEAD';\nexports.ADD_LEAD = 'ADD_LEAD';\nexports.GET_ERRORS = 'GET_ERRORS';\nexports.CLEAR_ERRORS = 'CLEAR_ERRORS';\nexports.GET_MESSAGES = 'GET_MESSAGES';\nexports.CREATE_MESSAGE = 'CREATE_MESSAGE';\nexports.CLEAR_MESSAGE = 'CLEAR_MESSAGE';\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/actions/types.ts?");
 
 /***/ }),
 
@@ -130,7 +154,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst react_alert_1 = __webpack_require__(/*! react-alert */ \"./node_modules/react-alert/dist/esm/react-alert.js\");\nconst Alerts = ({ errors, alert }) => {\n    React.useEffect(() => {\n        if (errors.msg.name)\n            alert.error(errors.msg.name);\n        if (errors.msg.email)\n            alert.error(errors.msg.email);\n        if (errors.msg.message)\n            alert.error(errors.msg.message);\n    }, [errors]);\n    return React.createElement(React.Fragment, null);\n};\nexports.default = react_alert_1.withAlert()(Alerts);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/layout/Alerts.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst react_alert_1 = __webpack_require__(/*! react-alert */ \"./node_modules/react-alert/dist/esm/react-alert.js\");\nconst Alerts = ({ errors, message, alert, clearMessage, clearErrors }) => {\n    React.useEffect(() => {\n        if (errors.msg) {\n            if (errors.msg.name)\n                alert.error(errors.msg.name);\n            if (errors.msg.email)\n                alert.error(errors.msg.email);\n            if (errors.msg.message)\n                alert.error(errors.msg.message);\n        }\n        if (message)\n            alert.success(message);\n        clearMessage();\n        clearErrors();\n    }, [errors.msg, message]);\n    return React.createElement(React.Fragment, null);\n};\nexports.default = react_alert_1.withAlert()(Alerts);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/components/layout/Alerts.tsx?");
 
 /***/ }),
 
@@ -190,7 +214,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst Alerts_1 = __webpack_require__(/*! ../components/layout/Alerts */ \"./leadmanager/frontend/src/components/layout/Alerts.tsx\");\nconst mapStateToProps = (state) => ({\n    errors: state.errors\n});\nexports.default = react_redux_1.connect(mapStateToProps)(Alerts_1.default);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/containers/AlertsContainer.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\nconst messages_1 = __webpack_require__(/*! ../actions/messages */ \"./leadmanager/frontend/src/actions/messages.ts\");\nconst errors_1 = __webpack_require__(/*! ../actions/errors */ \"./leadmanager/frontend/src/actions/errors.ts\");\nconst Alerts_1 = __webpack_require__(/*! ../components/layout/Alerts */ \"./leadmanager/frontend/src/components/layout/Alerts.tsx\");\nconst mapStateToProps = (state) => ({\n    errors: state.errors,\n    message: state.messages.msg\n});\nexports.default = react_redux_1.connect(mapStateToProps, { clearMessage: messages_1.clearMessage, clearErrors: errors_1.clearErrors })(Alerts_1.default);\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/containers/AlertsContainer.tsx?");
 
 /***/ }),
 
@@ -238,7 +262,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    msg: {},\n    status: null\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_ERRORS:\n            return Object.assign({}, state, { msg: action.msg, status: action.status });\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/errorsReducer.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    msg: {},\n    status: null\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_ERRORS:\n            return Object.assign({}, state, { msg: action.msg, status: action.status });\n        case types_1.CLEAR_ERRORS:\n            return {\n                state: initialState\n            };\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/errorsReducer.ts?");
 
 /***/ }),
 
@@ -250,7 +274,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst redux_1 = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\nconst leadsReducer_1 = __webpack_require__(/*! ./leadsReducer */ \"./leadmanager/frontend/src/reducers/leadsReducer.ts\");\nconst errorsReducer_1 = __webpack_require__(/*! ./errorsReducer */ \"./leadmanager/frontend/src/reducers/errorsReducer.ts\");\nexports.default = redux_1.combineReducers({ leads: leadsReducer_1.default, errors: errorsReducer_1.default });\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst redux_1 = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\nconst leadsReducer_1 = __webpack_require__(/*! ./leadsReducer */ \"./leadmanager/frontend/src/reducers/leadsReducer.ts\");\nconst errorsReducer_1 = __webpack_require__(/*! ./errorsReducer */ \"./leadmanager/frontend/src/reducers/errorsReducer.ts\");\nconst messagesReducer_1 = __webpack_require__(/*! ./messagesReducer */ \"./leadmanager/frontend/src/reducers/messagesReducer.ts\");\nexports.default = redux_1.combineReducers({ leads: leadsReducer_1.default, errors: errorsReducer_1.default, messages: messagesReducer_1.default });\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/index.ts?");
 
 /***/ }),
 
@@ -263,6 +287,18 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 
 "use strict";
 eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    leads: []\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_LEADS:\n            return Object.assign({}, state, { leads: action.leads });\n        case types_1.DELETE_LEAD:\n            return Object.assign({}, state, { leads: state.leads.filter(lead => lead.id !== action.deleted) });\n        case types_1.ADD_LEAD:\n            return Object.assign({}, state, { leads: [...state.leads, action.added] });\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/leadsReducer.ts?");
+
+/***/ }),
+
+/***/ "./leadmanager/frontend/src/reducers/messagesReducer.ts":
+/*!**************************************************************!*\
+  !*** ./leadmanager/frontend/src/reducers/messagesReducer.ts ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst types_1 = __webpack_require__(/*! ../actions/types */ \"./leadmanager/frontend/src/actions/types.ts\");\nconst initialState = {\n    msg: null\n};\nexports.default = (state = initialState, action) => {\n    switch (action.type) {\n        case types_1.GET_MESSAGES:\n            return state;\n        case types_1.CREATE_MESSAGE:\n            return Object.assign({}, state, { msg: action.msg });\n        case types_1.CLEAR_MESSAGE:\n            return {\n                state: initialState\n            };\n        default:\n            return state;\n    }\n};\n\n\n//# sourceURL=webpack:///./leadmanager/frontend/src/reducers/messagesReducer.ts?");
 
 /***/ }),
 
