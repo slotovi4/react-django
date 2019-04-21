@@ -1,4 +1,5 @@
 import { CREATE_MESSAGE, CLEAR_MESSAGE } from './types';
+import { Dispatch } from 'react';
 
 export const createMessage = (msg: string) => {
   return {
@@ -7,6 +8,6 @@ export const createMessage = (msg: string) => {
   };
 };
 
-export const clearMessage = () => (dispatch: any) => {
+export const clearMessage = () => (dispatch: Dispatch<object>) => {
   dispatch({ type: CLEAR_MESSAGE });
 };

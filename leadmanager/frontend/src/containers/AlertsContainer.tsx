@@ -4,7 +4,7 @@ import { clearErrors } from '../actions/errors';
 import Alerts from '../components/layout/Alerts';
 
 const mapStateToProps = (state: any) => ({
-  errors: state.errors,
+  errors: state.errors.msg,
   message: state.messages.msg
 });
 

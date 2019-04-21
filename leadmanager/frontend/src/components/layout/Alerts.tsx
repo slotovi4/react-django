@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { IMsg } from '../../actions/interface';
 import { withAlert, AlertManager } from 'react-alert';
 
 interface IProps {
-  errors: any;
+  errors: IMsg;
   message: string;
   alert: AlertManager;
   clearMessage: () => void;
@@ -17,17 +18,17 @@ const Alerts = ({
   clearErrors
 }: IProps) => {
   React.useEffect(() => {
-    if (errors.msg) {
-      if (errors.msg.name) alert.error(errors.msg.name);
-      if (errors.msg.email) alert.error(errors.msg.email);
-      if (errors.msg.message) alert.error(errors.msg.message);
+    if (errors) {
+      if (errors.name) alert.error(errors.name);
+      if (errors.email) alert.error(errors.email);
+      if (errors.message) alert.error(errors.message);
     }
 
     if (message) alert.success(message);
 
     clearMessage();
     clearErrors();
-  }, [errors.msg, message]);
+  }, [errors, message]);
 
   return <React.Fragment />;
 };

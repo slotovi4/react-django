@@ -4,3 +4,9 @@ export interface ILead {
   email: string;
   message: string;
 }
+
+export interface IMsg {
+  name?: string;
+  email?: string;
+  message?: string;
+}
